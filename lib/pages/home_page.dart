@@ -1,7 +1,79 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Map<String, dynamic>> listOfBurgers = [
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger2',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger3',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger4',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger5',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger6',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger7',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+    {
+      'url':
+          'https://img.freepik.com/premium-photo/cheeseburger-isolated-white-background_742252-2213.jpg?w=826',
+      'name': 'Beef Burger8',
+      'estimatedTime': '30',
+      'frequencyOfSelling': '120',
+      'price': '5.40',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -83,29 +155,53 @@ class HomePage extends StatelessWidget {
               GridView(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisExtent: 200,
-                  mainAxisSpacing: 18,
-                  crossAxisSpacing: 18,
+                  mainAxisExtent: 230,
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
                 ),
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                children: const <Widget>[
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
-                  FlutterLogo(),
+                children: <Widget>[
+                  for (int i = 0; i < listOfBurgers.length; i++)
+                    Card(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12),
+                            child: Container(
+                              width: 120,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.network(
+                                  '${listOfBurgers[i]['url']}',
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Text(
+                            '${listOfBurgers[i]['name']}',
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            '${listOfBurgers[i]['estimatedTime']} Min  |  ${listOfBurgers[i]['frequencyOfSelling']} Sell',
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Color.fromARGB(255, 139, 139, 139),
+                            ),
+                          ),
+                          Text(
+                            '\$ ${listOfBurgers[i]['price']}',
+                            style: const TextStyle(
+                                fontSize: 20,
+                                color: Color.fromARGB(255, 235, 112, 30),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             ]),
