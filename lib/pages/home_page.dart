@@ -166,8 +166,9 @@ class _HomePageState extends State<HomePage> {
                         size: 45,
                         color: Colors.grey,
                       ),
-                      hintText: 'Findyourfood...',
-                      hintStyle: TextStyle(fontWeight: FontWeight.w300),
+                      hintText: 'Find your food ...',
+                      hintStyle:
+                          TextStyle(fontWeight: FontWeight.w300, fontSize: 20),
                     ),
                   ),
                 ),
@@ -235,7 +236,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
-        height: 80,
+        height: 70,
         width: 90,
         child: FloatingActionButton(
           shape: const CircleBorder(),
@@ -244,7 +245,7 @@ class _HomePageState extends State<HomePage> {
           child: const Icon(
             Icons.shopping_cart_outlined,
             color: Colors.white,
-            size: 35,
+            size: 30,
           ),
         ),
       ),
@@ -253,34 +254,45 @@ class _HomePageState extends State<HomePage> {
         child: BottomAppBar(
             shape: const CircularNotchedRectangle(),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.home,
-                    color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.payment,
-                    color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.payment,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.favorite,
-                    color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.only(left: 135),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.favorite,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.person,
-                    color: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.only(left: 35),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.person,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ],
