@@ -132,8 +132,18 @@ class _HomePageState extends State<HomePage> {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(16.0),
                         onTap: () {
+                          // setState(() {
+                          //   currentCategoryIndex = index;
+                          // });
+
                           setState(() {
-                            currentCategoryIndex = index;
+                            if (currentCategoryIndex == null ||
+                                currentCategoryIndex != index) {
+                              currentCategoryIndex = index;
+                            } else {
+                              currentCategoryIndex = null;
+                              filteredFood = listOfItems;
+                            }
                           });
                           if (currentCategoryIndex != null) {
                             final selectedCategory =
