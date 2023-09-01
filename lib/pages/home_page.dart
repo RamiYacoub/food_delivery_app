@@ -1,4 +1,5 @@
 import 'package:delivery_app/models/category_item.dart';
+import 'package:delivery_app/pages/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:delivery_app/models/food_items.dart';
 
@@ -89,8 +90,8 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 32.0),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
-                  child: Image.network(
-                    'http://t4.ftcdn.net/jpg/02/94/30/59/360_F_294305984_60loa4kkSKjpHXegEUFqryY1PrhRRMeN.jpg',
+                  child: Image.asset(
+                    'assets/images/banner.png',
                     height: 200,
                     fit: BoxFit.fill,
                   ),
@@ -118,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     hintText: '  Find your food ...',
                     hintStyle:
-                        TextStyle(fontWeight: FontWeight.w300, fontSize: 20),
+                        TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
                   ),
                 ),
                 const SizedBox(height: 16.0),
@@ -194,79 +195,86 @@ class _HomePageState extends State<HomePage> {
                   ),
                   shrinkWrap: true,
                   itemCount: filteredFood.length,
-                  itemBuilder: (context, index) => Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: [
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: SizedBox(
-                                width: 120,
-                                child: ClipRRect(
-                                  child: Image.asset(
-                                    filteredFood[index].url,
-                                    height: 100,
-                                    fit: BoxFit.fill,
+                  itemBuilder: (context, index) => InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => ProductDetails(),
+                      ));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: [
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20.0),
+                                child: SizedBox(
+                                  width: 120,
+                                  child: ClipRRect(
+                                    child: Image.asset(
+                                      filteredFood[index].url,
+                                      height: 100,
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 12),
-                            Text(
-                              filteredFood[index].name,
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              '${filteredFood[index].estimatedTime} Min  |  ${filteredFood[index].frequencyOfSelling} Sell',
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Color.fromARGB(255, 139, 139, 139),
+                              const SizedBox(height: 12),
+                              Text(
+                                filteredFood[index].name,
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
                               ),
-                            ),
-                            Text(
-                              '\$ ${filteredFood[index].price}',
-                              style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Color.fromARGB(255, 235, 112, 30),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        PositionedDirectional(
-                          top: 0,
-                          end: 0,
-                          child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  filteredFood[index] = filteredFood[index]
-                                      .copyWith(
-                                          isFavorite:
-                                              !filteredFood[index].isFavorite);
-                                  final selectedFoodItem =
-                                      listOfItems.firstWhere((item) =>
-                                          item.id == filteredFood[index].id);
-                                  final selectedFoodItemIndex =
-                                      listOfItems.indexOf(selectedFoodItem);
-                                  listOfItems[selectedFoodItemIndex] =
-                                      filteredFood[index];
-                                });
-                              },
-                              icon: Icon(
-                                filteredFood[index].isFavorite == false
-                                    ? Icons.favorite_border
-                                    : Icons.favorite,
-                                color: Colors.deepOrange,
-                              )),
-                        )
-                      ],
+                              const SizedBox(height: 4),
+                              Text(
+                                '${filteredFood[index].estimatedTime} Min  |  ${filteredFood[index].frequencyOfSelling} Sell',
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Color.fromARGB(255, 139, 139, 139),
+                                ),
+                              ),
+                              Text(
+                                '\$ ${filteredFood[index].price}',
+                                style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Color.fromARGB(255, 235, 112, 30),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                          PositionedDirectional(
+                            top: 0,
+                            end: 0,
+                            child: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    filteredFood[index] = filteredFood[index]
+                                        .copyWith(
+                                            isFavorite: !filteredFood[index]
+                                                .isFavorite);
+                                    final selectedFoodItem =
+                                        listOfItems.firstWhere((item) =>
+                                            item.id == filteredFood[index].id);
+                                    final selectedFoodItemIndex =
+                                        listOfItems.indexOf(selectedFoodItem);
+                                    listOfItems[selectedFoodItemIndex] =
+                                        filteredFood[index];
+                                  });
+                                },
+                                icon: Icon(
+                                  filteredFood[index].isFavorite == false
+                                      ? Icons.favorite_border
+                                      : Icons.favorite,
+                                  color: Colors.deepOrange,
+                                )),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   physics: const NeverScrollableScrollPhysics(),
