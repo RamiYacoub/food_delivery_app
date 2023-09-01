@@ -132,10 +132,6 @@ class _HomePageState extends State<HomePage> {
                       child: InkWell(
                         borderRadius: BorderRadius.circular(16.0),
                         onTap: () {
-                          // setState(() {
-                          //   currentCategoryIndex = index;
-                          // });
-
                           setState(() {
                             if (currentCategoryIndex == null ||
                                 currentCategoryIndex != index) {
@@ -198,42 +194,78 @@ class _HomePageState extends State<HomePage> {
                   ),
                   shrinkWrap: true,
                   itemCount: filteredFood.length,
-                  itemBuilder: (context, index) => Card(
-                    child: Column(
+                  itemBuilder: (context, index) => Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Stack(
+                      alignment: AlignmentDirectional.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0),
-                          child: SizedBox(
-                            width: 120,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.network(
-                                filteredFood[index].url,
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: SizedBox(
+                                width: 120,
+                                child: ClipRRect(
+                                  child: Image.asset(
+                                    filteredFood[index].url,
+                                    height: 100,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            const SizedBox(height: 12),
+                            Text(
+                              filteredFood[index].name,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              '${filteredFood[index].estimatedTime} Min  |  ${filteredFood[index].frequencyOfSelling} Sell',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 139, 139, 139),
+                              ),
+                            ),
+                            Text(
+                              '\$ ${filteredFood[index].price}',
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Color.fromARGB(255, 235, 112, 30),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        const SizedBox(height: 12),
-                        Text(
-                          listOfItems[index].name,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          '${filteredFood[index].estimatedTime} Min  |  ${filteredFood[index].frequencyOfSelling} Sell',
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Color.fromARGB(255, 139, 139, 139),
-                          ),
-                        ),
-                        Text(
-                          '\$ ${filteredFood[index].price}',
-                          style: const TextStyle(
-                              fontSize: 20,
-                              color: Color.fromARGB(255, 235, 112, 30),
-                              fontWeight: FontWeight.bold),
-                        ),
+                        PositionedDirectional(
+                          top: 0,
+                          end: 0,
+                          child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  filteredFood[index] = filteredFood[index]
+                                      .copyWith(
+                                          isFavorite:
+                                              !filteredFood[index].isFavorite);
+                                  final selectedFoodItem =
+                                      listOfItems.firstWhere((item) =>
+                                          item.id == filteredFood[index].id);
+                                  final selectedFoodItemIndex =
+                                      listOfItems.indexOf(selectedFoodItem);
+                                  listOfItems[selectedFoodItemIndex] =
+                                      filteredFood[index];
+                                });
+                              },
+                              icon: Icon(
+                                filteredFood[index].isFavorite == false
+                                    ? Icons.favorite_border
+                                    : Icons.favorite,
+                                color: Colors.deepOrange,
+                              )),
+                        )
                       ],
                     ),
                   ),
@@ -243,77 +275,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
-        height: 70,
-        width: 90,
-        child: FloatingActionButton(
-          shape: const CircleBorder(),
-          backgroundColor: Colors.deepOrangeAccent,
-          onPressed: () {},
-          child: const Icon(
-            Icons.shopping_cart_outlined,
-            color: Colors.white,
-            size: 30,
-          ),
-        ),
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 90,
-        child: BottomAppBar(
-            notchMargin: 0.0,
-            shape: const CircularNotchedRectangle(),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(end: 35.0),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.home,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.payment,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.favorite,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 35.0),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.person,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )),
       ),
     );
   }

@@ -11,10 +11,11 @@ class CategoryItem {
 }
 
 List<CategoryItem> categories = [
-  CategoryItem(id: '1', name: 'Burger', imgUrl: 'assets/images/burger.png'),
-  CategoryItem(id: '2', name: 'Pizza', imgUrl: 'assets/images/pizza.png'),
-  CategoryItem(id: '3', name: 'Pasta', imgUrl: 'assets/images/pasta.png'),
-  CategoryItem(id: '4', name: 'Chicken', imgUrl: 'assets/images/chicken.png'),
-  CategoryItem(id: '5', name: 'Drinks', imgUrl: 'assets/images/drinks.png'),
-  CategoryItem(id: '6', name: 'beef', imgUrl: 'assets/images/beef.png'),
+  CategoryItem(id: '1', name: 'Burger', imgUrl: 'assets/images/burgerIcon.png'),
+  CategoryItem(id: '2', name: 'Pizza', imgUrl: 'assets/images/pizzaIcon.png'),
+  CategoryItem(id: '3', name: 'Pasta', imgUrl: 'assets/images/pastaIcon.png'),
+  CategoryItem(
+      id: '4', name: 'Chicken', imgUrl: 'assets/images/chickenIcon.png'),
+  CategoryItem(id: '5', name: 'Drinks', imgUrl: 'assets/images/drinksIcon.png'),
+  CategoryItem(id: '6', name: 'Beef', imgUrl: 'assets/images/beefIcon.png'),
 ];

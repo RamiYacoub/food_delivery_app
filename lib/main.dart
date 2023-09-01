@@ -1,5 +1,5 @@
+import 'package:delivery_app/pages/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      title: 'Food delivey app',
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: HomePage(),
+      theme: ThemeData(useMaterial3: true, fontFamily: "Montserrat"),
+      home: const CustomBottomNavBar(),
     );
   }
 }
