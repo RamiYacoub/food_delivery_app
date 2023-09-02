@@ -198,7 +198,9 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) => InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => ProductDetails(),
+                        builder: (context) => ProductDetails(
+                          foodItem: filteredFood[index],
+                        ),
                       ));
                     },
                     child: Container(
@@ -217,7 +219,7 @@ class _HomePageState extends State<HomePage> {
                                   width: 120,
                                   child: ClipRRect(
                                     child: Image.asset(
-                                      filteredFood[index].url,
+                                      filteredFood[index].imgUrl,
                                       height: 100,
                                       fit: BoxFit.fill,
                                     ),

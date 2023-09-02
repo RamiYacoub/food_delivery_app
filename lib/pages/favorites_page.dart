@@ -35,7 +35,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
                       leading: Image.asset(
-                        favoriteItems[index].url,
+                        favoriteItems[index].imgUrl,
                         height: 100,
                         width: 70,
                         fit: BoxFit.fill,

@@ -1,7 +1,7 @@
 class FoodItem {
   final int id;
   final String name;
-  final String url;
+  final String imgUrl;
   final String estimatedTime;
   final int frequencyOfSelling;
   final double price;
@@ -11,7 +11,7 @@ class FoodItem {
   const FoodItem({
     required this.id,
     required this.name,
-    required this.url,
+    required this.imgUrl,
     required this.estimatedTime,
     required this.frequencyOfSelling,
     required this.price,
@@ -22,7 +22,7 @@ class FoodItem {
   FoodItem copyWith({
     int? id,
     String? name,
-    String? url,
+    String? imgUrl,
     String? estimatedTime,
     int? frequencyOfSelling,
     double? price,
@@ -32,7 +32,7 @@ class FoodItem {
     return FoodItem(
       id: id ?? this.id,
       name: name ?? this.name,
-      url: url ?? this.url,
+      imgUrl: imgUrl ?? this.imgUrl,
       estimatedTime: estimatedTime ?? this.estimatedTime,
       frequencyOfSelling: frequencyOfSelling ?? this.frequencyOfSelling,
       price: price ?? this.price,
@@ -46,7 +46,7 @@ List<FoodItem> listOfItems = [
   const FoodItem(
       id: 1,
       name: 'Beef Burger',
-      url: 'assets/images/beef burger.png',
+      imgUrl: 'assets/images/beef burger.png',
       estimatedTime: '30',
       frequencyOfSelling: 120,
       price: 4.5,
@@ -54,7 +54,7 @@ List<FoodItem> listOfItems = [
   const FoodItem(
       id: 2,
       name: 'Lazania',
-      url: 'assets/images/lazania.png',
+      imgUrl: 'assets/images/lazania.png',
       estimatedTime: '30',
       frequencyOfSelling: 120,
       price: 3.6,
@@ -62,7 +62,7 @@ List<FoodItem> listOfItems = [
   const FoodItem(
       id: 3,
       name: 'Cola',
-      url: 'assets/images/cola.png',
+      imgUrl: 'assets/images/cola.png',
       estimatedTime: '30',
       frequencyOfSelling: 120,
       price: 5,
@@ -70,7 +70,7 @@ List<FoodItem> listOfItems = [
   const FoodItem(
       id: 4,
       name: 'Broast',
-      url: 'assets/images/broast.png',
+      imgUrl: 'assets/images/broast.png',
       estimatedTime: '30',
       frequencyOfSelling: 120,
       price: 3.9,
@@ -78,7 +78,7 @@ List<FoodItem> listOfItems = [
   const FoodItem(
       id: 5,
       name: 'Steak',
-      url: 'assets/images/steak.png',
+      imgUrl: 'assets/images/steak.png',
       estimatedTime: '30',
       frequencyOfSelling: 120,
       price: 12.8,
@@ -86,7 +86,7 @@ List<FoodItem> listOfItems = [
   const FoodItem(
       id: 6,
       name: 'Vegetables Pizza',
-      url: 'assets/images/pizza.png',
+      imgUrl: 'assets/images/pizza.png',
       estimatedTime: '30',
       frequencyOfSelling: 120,
       price: 9.2,
