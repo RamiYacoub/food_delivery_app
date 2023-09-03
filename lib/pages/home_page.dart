@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           'Current Location',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 14,
                             color: Colors.grey,
                           ),
                         ),
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                               width: 6.0,
                             ),
                             Text(
-                              'Cairo, Egypt',
+                              'Tullkarm, Palestine',
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ),
                           ],
