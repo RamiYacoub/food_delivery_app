@@ -1,11 +1,11 @@
 import 'package:delivery_app/widgets/product_details_property.dart';
+import 'package:delivery_app/models/food_items.dart';
 import 'package:flutter/material.dart';
 
-import '../models/food_items.dart';
-
+// ignore: must_be_immutable
 class ProductDetails extends StatefulWidget {
-  final FoodItem foodItem;
-  const ProductDetails({super.key, required this.foodItem});
+  FoodItem foodItem;
+  ProductDetails({super.key, required this.foodItem});
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
@@ -35,9 +35,22 @@ class _ProductDetailsState extends State<ProductDetails> {
         title: Text(widget.foodItem.name),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_border,
+            onPressed: () {
+              setState(() {
+                widget.foodItem = widget.foodItem.copyWith(
+                  isFavorite: !widget.foodItem.isFavorite,
+                );
+                final selectedFoodItem = listOfItems
+                    .firstWhere((item) => item.id == widget.foodItem.id);
+                final selectedFoodItemIndex =
+                    listOfItems.indexOf(selectedFoodItem);
+                listOfItems[selectedFoodItemIndex] = widget.foodItem;
+              });
+            },
+            icon: Icon(
+              widget.foodItem.isFavorite
+                  ? Icons.favorite
+                  : Icons.favorite_border,
               color: Colors.deepOrange,
             ),
           ),
@@ -133,7 +146,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ProductDetailsProoerty(
+                              ProductDetailsProrerty(
                                 title: 'Size',
                                 value: 'Medium',
                               ),
@@ -143,7 +156,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   thickness: 2.0,
                                 ),
                               ),
-                              ProductDetailsProoerty(
+                              ProductDetailsProrerty(
                                 title: 'Calories',
                                 value: '150 KCal',
                               ),
@@ -153,7 +166,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   thickness: 2.0,
                                 ),
                               ),
-                              ProductDetailsProoerty(
+                              ProductDetailsProrerty(
                                 title: 'Cooking',
                                 value: '5-10 Mins',
                               ),

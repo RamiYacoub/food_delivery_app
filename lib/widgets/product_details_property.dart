@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ProductDetailsProoerty extends StatelessWidget {
+class ProductDetailsProrerty extends StatelessWidget {
   final String title;
   final String value;
-  const ProductDetailsProoerty({
+  const ProductDetailsProrerty({
     super.key,
     required this.title,
     required this.value,

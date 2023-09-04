@@ -196,12 +196,13 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   itemCount: filteredFood.length,
                   itemBuilder: (context, index) => InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
+                    onTap: () async {
+                      await Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ProductDetails(
                           foodItem: filteredFood[index],
                         ),
                       ));
+                      setState(() {});
                     },
                     child: Container(
                       decoration: BoxDecoration(
