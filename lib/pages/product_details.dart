@@ -1,6 +1,7 @@
 import 'package:delivery_app/widgets/product_details_property.dart';
 import 'package:delivery_app/models/food_items.dart';
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 
 // ignore: must_be_immutable
 class ProductDetails extends StatefulWidget {
@@ -175,7 +176,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                           const SizedBox(
                             height: 32.0,
                           ),
-                          Text(
+                          ReadMoreText(
+                            colorClickableText: Colors.pink,
+                            trimCollapsedText: 'Show more',
+                            trimExpandedText: 'Show less',
+                            moreStyle: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            trimLines: 8,
+                            trimMode: TrimMode.Line,
                             widget.foodItem.description,
                             style: const TextStyle(
                               fontSize: 14.0,
