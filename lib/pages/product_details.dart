@@ -143,14 +143,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                           const SizedBox(
                             height: 32.0,
                           ),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ProductDetailsProrerty(
                                 title: 'Size',
-                                value: 'Medium',
+                                value: widget.foodItem.size,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 40.0,
                                 child: VerticalDivider(
                                   thickness: 2.0,
@@ -158,9 +158,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                               ),
                               ProductDetailsProrerty(
                                 title: 'Calories',
-                                value: '150 KCal',
+                                value: widget.foodItem.calories,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 40.0,
                                 child: VerticalDivider(
                                   thickness: 2.0,
@@ -168,16 +168,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                               ),
                               ProductDetailsProrerty(
                                 title: 'Cooking',
-                                value: '5-10 Mins',
+                                value: widget.foodItem.cooking,
                               ),
                             ],
                           ),
                           const SizedBox(
                             height: 32.0,
                           ),
-                          const Text(
-                            'hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe hahaha hohoho hehehe ',
-                            style: TextStyle(
+                          Text(
+                            widget.foodItem.description,
+                            style: const TextStyle(
                               fontSize: 14.0,
                               fontWeight: FontWeight.w400,
                               color: Colors.grey,
