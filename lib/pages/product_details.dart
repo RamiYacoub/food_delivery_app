@@ -177,13 +177,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                             height: 32.0,
                           ),
                           ReadMoreText(
-                            colorClickableText: Colors.pink,
+                            colorClickableText: Colors.red,
                             trimCollapsedText: 'Show more',
                             trimExpandedText: 'Show less',
-                            moreStyle: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
                             trimLines: 8,
                             trimMode: TrimMode.Line,
                             widget.foodItem.description,
