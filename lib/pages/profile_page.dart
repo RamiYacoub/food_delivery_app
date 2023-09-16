@@ -64,6 +64,7 @@ class ProfilePage extends StatelessWidget {
                   ProfileListTile(
                     leadingIcon: Icons.shopping_cart_outlined,
                     title: 'Orders',
+                    nameOfPage: 'OrderPage',
                   ),
                   Divider(
                     indent: 20,
@@ -72,6 +73,7 @@ class ProfilePage extends StatelessWidget {
                   ProfileListTile(
                     leadingIcon: Icons.card_giftcard,
                     title: 'Coupons',
+                    nameOfPage: 'CouponsPage',
                   ),
                   Divider(
                     indent: 20,

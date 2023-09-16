@@ -1,18 +1,34 @@
+import 'package:delivery_app/pages/coupons_page.dart';
+import 'package:delivery_app/pages/orders_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfileListTile extends StatelessWidget {
   final IconData leadingIcon;
   final String title;
+  final String nameOfPage;
+
   const ProfileListTile({
-    super.key,
+    Key? key,
     required this.leadingIcon,
     required this.title,
-  });
+    required this.nameOfPage,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        final Map<String, WidgetBuilder> pageRoutes = {
+          'OrderPage': (context) => const OrderPage(),
+          'CouponsPage': (context) => const CouponsPage(),
+        };
+
+        if (pageRoutes.containsKey(nameOfPage)) {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: pageRoutes[nameOfPage]!,
+          ));
+        }
+      },
       leading: Icon(
         leadingIcon,
         size: 40,
