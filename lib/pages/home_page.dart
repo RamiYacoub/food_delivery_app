@@ -5,7 +5,6 @@ import 'package:delivery_app/models/food_items.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -103,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                 const TextField(
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
+                    fillColor: Color.fromARGB(255, 226, 224, 224),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
                         Radius.circular(16.0),
@@ -157,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                           decoration: BoxDecoration(
                               color: index == currentCategoryIndex
                                   ? Colors.orange[800]
-                                  : Colors.white,
+                                  : const Color.fromARGB(255, 226, 224, 224),
                               borderRadius: BorderRadius.circular(16.0)),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -207,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color.fromARGB(255, 226, 224, 224),
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Stack(

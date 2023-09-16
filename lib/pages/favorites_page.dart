@@ -1,9 +1,8 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:delivery_app/models/food_items.dart';
 import 'package:flutter/material.dart';
 
 class FavoritesPage extends StatefulWidget {
+  // ignore: use_key_in_widget_constructors
   const FavoritesPage({Key? key});
 
   @override
