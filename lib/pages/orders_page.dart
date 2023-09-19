@@ -36,11 +36,13 @@ class _OrderPageState extends State<OrderPage> {
                     child: Center(
                       child: ListTile(
                         leading: Text(
-                          listOfOrders[index].name,
+                          listOfOrders[index].foodItem.name,
                           style: const TextStyle(fontSize: 22.0),
                         ),
+                        title:
+                            Text('quantity = ${listOfOrders[index].quantity}'),
                         trailing: Text(
-                          'value = ${listOfOrders[index].price.toString()}\$',
+                          'value = ${(listOfOrders[index].foodItem.price * listOfOrders[index].quantity).toString()}\$',
                           style: const TextStyle(fontSize: 18.0),
                         ),
                       ),

@@ -1,3 +1,5 @@
+import 'package:delivery_app/models/order.dart';
+
 class FoodItem {
   final int id;
   final String name;
@@ -145,4 +147,4 @@ List<FoodItem> listOfItems = [
   ),
 ];
 
-List<FoodItem> listOfOrders = [];
+List<Order> listOfOrders = [];

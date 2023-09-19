@@ -1,3 +1,4 @@
+import 'package:delivery_app/models/order.dart';
 import 'package:delivery_app/pages/custom_bottom_navbar.dart';
 import 'package:delivery_app/widgets/product_details_property.dart';
 import 'package:delivery_app/models/food_items.dart';
@@ -15,7 +16,7 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   int quantity = 1;
-  late List<FoodItem> ordersHistory = [];
+
   void _decreaseQuantity() {
     setState(() {
       if (quantity > 1) {
@@ -249,11 +250,16 @@ class _ProductDetailsState extends State<ProductDetails> {
     Widget continueButton = TextButton(
       child: const Text("Yes!"),
       onPressed: () {
-        listOfOrders.add(widget.foodItem);
+        listOfOrders.add(Order(foodItem: widget.foodItem, quantity: quantity));
         Navigator.of(context).pop();
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const CustomBottomNavBar(),
         ));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('The product added!'),
+          ),
+        );
       },
     );
 
