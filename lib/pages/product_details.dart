@@ -1,3 +1,4 @@
+import 'package:delivery_app/pages/custom_bottom_navbar.dart';
 import 'package:delivery_app/widgets/product_details_property.dart';
 import 'package:delivery_app/models/food_items.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   int quantity = 1;
-
+  late List<FoodItem> ordersHistory = [];
   void _decreaseQuantity() {
     setState(() {
       if (quantity > 1) {
@@ -147,7 +148,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              ProductDetailsProrerty(
+                              ProductDetailsProperty(
                                 title: 'Size',
                                 value: widget.foodItem.size,
                               ),
@@ -157,7 +158,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   thickness: 2.0,
                                 ),
                               ),
-                              ProductDetailsProrerty(
+                              ProductDetailsProperty(
                                 title: 'Calories',
                                 value: widget.foodItem.calories,
                               ),
@@ -167,7 +168,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   thickness: 2.0,
                                 ),
                               ),
-                              ProductDetailsProrerty(
+                              ProductDetailsProperty(
                                 title: 'Cooking',
                                 value: widget.foodItem.cooking,
                               ),
@@ -214,7 +215,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // listOfOrders.add(widget.foodItem);
+                        showAlertDialog(context);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.deepOrange,
                         foregroundColor: Colors.white,
@@ -224,13 +228,50 @@ class _ProductDetailsState extends State<ProductDetails> {
                       ),
                       child: const Text('Checkout'),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = TextButton(
+      child: const Text("No!"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: const Text("Yes!"),
+      onPressed: () {
+        listOfOrders.add(widget.foodItem);
+        Navigator.of(context).pop();
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const CustomBottomNavBar(),
+        ));
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      content: const Text("Are you sure you want buy it?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

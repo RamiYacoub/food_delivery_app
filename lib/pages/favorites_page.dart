@@ -16,6 +16,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
     return Container(
       color: Colors.white,
+      
       child: favoriteItems.isEmpty
           ? const Center(
               child: Text(
