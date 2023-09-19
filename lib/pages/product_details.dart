@@ -242,7 +242,12 @@ class _ProductDetailsState extends State<ProductDetails> {
   showAlertDialog(BuildContext context) {
     // set up the buttons
     Widget cancelButton = TextButton(
-      child: const Text("No!"),
+      child: const Text(
+        "No!",
+        style: TextStyle(
+          color: Colors.red,
+        ),
+      ),
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -265,7 +270,10 @@ class _ProductDetailsState extends State<ProductDetails> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      content: const Text("Are you sure you want buy it?"),
+      content: const Text(
+        "Are you sure you want buy it?",
+        style: TextStyle(fontSize: 22.0),
+      ),
       actions: [
         cancelButton,
         continueButton,
