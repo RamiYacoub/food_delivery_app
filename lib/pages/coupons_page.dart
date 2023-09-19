@@ -33,16 +33,19 @@ class _CouponsPageState extends State<CouponsPage> {
               itemBuilder: (context, index) {
                 return SizedBox(
                   height: 80,
-                  child: Card(
-                    child: Center(
-                      child: ListTile(
-                        leading: Text(
-                          coupons[index].name,
-                          style: const TextStyle(fontSize: 22.0),
-                        ),
-                        trailing: Text(
-                          'value = ${coupons[index].value.toString()}\$',
-                          style: const TextStyle(fontSize: 18.0),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Card(
+                      child: Center(
+                        child: ListTile(
+                          leading: Text(
+                            coupons[index].name,
+                            style: const TextStyle(fontSize: 22.0),
+                          ),
+                          trailing: Text(
+                            'value = ${coupons[index].value.toString()}\$',
+                            style: const TextStyle(fontSize: 18.0),
+                          ),
                         ),
                       ),
                     ),
