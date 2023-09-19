@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OrdersCouponsWidget extends StatelessWidget {
   final String title;
-  final int value;
+  final int? value;
   const OrdersCouponsWidget(
       {super.key, required this.title, required this.value});
 
